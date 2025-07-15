@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <!-- Head element, contains metadata about the page that is not displayed -->
+    <!-- Head element containing the page metadata -->
     <head>
-        <title> Bookstore App </title>
+        <title>Bookstore App</title>
+        <!-- Initialization of classes for format styles -->
+        <style>
+            .FirstStyle {
+                background-color: yellow;
+            }
+            .SecondStyle {
+                background-color: red;
+            }
+            .ItalicFont {
+                font-style: italic;
+            }
+        </style>
     </head>
 
-    <!-- Header element, contains the title, icon image and authorship -->
+    <!-- Header element with the title and authorship -->
     <header>
-        <h1> Online Bookstore </h1>
-        <p> Posted and Designed by Heinrich Schneidmüller </p>
+        <h1>Online Bookstore</h1>
+        <p>Example by Heinrich Schneidmüller</p>
         <nav>
             <a>Link 1</a>
             <a>Link 2</a>
@@ -16,28 +28,36 @@
         </nav>
     </header>
 
-    <!-- Main body of a page, -->
+    <!-- Main body with page content -->
     <body>
         <section>
-            <h2> This is a bookstore website, welcome! </h2>
-            <p> Here you can find and purchase various books of your liking. </p>
-            <img src="book.png" alt="Book.jpg">
+            <h2>This is a bookstore website, welcome!</h2>
+            <p>Here you can find and purchase various books of your liking.</p>
+            <img src="book.png" alt="* This is an image of a book *">
         </section>
 
-        <!-- This section contains list of available books -->
+        <!-- This section contains list of available books and bestsellers -->
         <section>
-            <h2> Book availability: </h2>
+            <h2>Book availability:</h2>
+            <!-- Unordered list that showcases the contextual use of style classes to highlight the availability status of books -->
             <ul>
-                <li>Book 1</li>
-                <li>Book 2</li>
-                <li>Book 3</li>
+                <li>Book A</li>
+                <li class="FirstStyle">Book B (only 6 available)</li>
+                <li class="SecondStyle">Book C (out of stock)</li>
             </ul>
+            <!-- Numbered (organised) list demonstrating how it can be used for sorted listing -->
+            <h2>Bestsellers:</h2>
+            <ol>
+                <li>Book C</li>
+                <li>Book B</li>
+                <li>Book A</li>
+            </ol>
         </section>
     </body>
 
-    <!-- Footer element, defines footer of a section or -->
+    <!-- Footer element, defines footer of a page or a section (footer of a page in this case) -->
     <footer>
-        <h3> This is a footer. </h3>
-        <p>  All rights reserved. </p>
+        <h3>This is a footer.</h3>
+        <p class="ItalicFont">Contacts, copyright and authorship may be added here.</p>
     </footer>
 </html>
