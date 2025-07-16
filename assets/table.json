@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Lord of the Rings",
+        "author": "J. R. R. Tolkien",
+        "year": 1954,
+        "genre": "High Fantasy, Adventure"
+    },
+    {
+        "title": "Crime and Punishmnet",
+        "author": "Fyodor Dostoevsky",
+        "year": 1856,
+        "genre": "Literaly Fiction"
+    },
+    {
+        "title": "The Little Prince",
+        "author": "Antoine de Saint-Exupry",
+        "year": 1943,
+        "genre": "Science fantasy"
+    }
+]
