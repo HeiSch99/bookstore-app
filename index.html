@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book Manager</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+        }
+    </style>
 </head>
+
 <body>
+    <h1>Book Manager</h1>
     
+    <!-- dynamically updating table of books -->
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+    </table>
+
+    <!-- input fields to update the table -->
+    <p>The table can be updated here:</p>
+    <form id="bookForm">
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="author" placeholder="Author">
+        <input type="number" id="year" placeholder="Year">
+        <input type="text" id="genre" placeholder="Genre">
+        <button type="submit">Update Changes</button>
+    </form>
+
+    <!-- loads script -->
+    <script scr="main.js"></script>
 </body>
 </html>
