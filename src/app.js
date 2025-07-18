@@ -12,7 +12,7 @@ new Vue({
         editingIndex: null
     },
     created() {
-        fetch('data/books.json')
+        fetch('assets/books.json')
             .then(res => res.json())
             .then(data => {
                 this.books = data;
@@ -44,6 +44,19 @@ new Vue({
                 this.books.push(newBook);
             }
             this.resetForm();
+        },
+
+        editBook(index) {
+            this.form = { ...this.books[index] };
+            this.editingIndex = index;
+            this.isEditing = true;
+        },
+
+        deleteBook(index) {
+            this.books.splice(index, 1);
+            if (this.isEditing && this.editingIndex === index) {
+                this.resetForm();
+            }
         },
 
         resetForm() {
