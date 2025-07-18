@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -16,33 +17,46 @@
 </head>
 
 <body>
-    <h1>Book Manager</h1>
-    
-    <!-- dynamically updating table of books -->
-    <table id="bookTable">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Year</th>
-                <th>Genre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+    <div id="app">
+        <h1>Book Manager</h1>
+        
+        <!-- dynamically updating table of books -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Genre</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(book, index) in books" :key="book.title">
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{{ book.year }}</td>
+                    <td>{{ book.genre }}</td>
+                    <td>
+                        <button @click="editBook(index)">Edit</button>
+                        <button @click="deleteBook(index)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- input fields to update the table -->
-    <p>The table can be updated here:</p>
-    <form id="bookForm">
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="author" placeholder="Author">
-        <input type="number" id="year" placeholder="Year">
-        <input type="text" id="genre" placeholder="Genre">
-        <button type="submit">Update Changes</button>
-    </form>
+        <!-- input fields to update the table -->
+        <p>The table can be updated here:</p>
+        <form @submit.prevent="submitForm">
+            <input v-model="form.title" placeholder="Title">
+            <input v-model="form.author" placeholder="Author">
+            <input v-model="form.year" placeholder="Year">
+            <input v-model="form.genre" placeholder="Genre">
+            <button type="submit">{{ isEditing ? "Update" : "Add" }} Book</button>
+        </form>
+    </div>
 
     <!-- loads script -->
-    <script scr="src/main.js"></script>
+    <script scr="src/app.js"></script>
 </body>
 </html>
