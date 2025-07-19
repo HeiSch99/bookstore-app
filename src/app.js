@@ -1,4 +1,5 @@
-const { createApp } = Vue
+alert("app.js is loaded."); //debug
+const { createApp } = Vue;
 
 createApp({
     data() {
@@ -18,6 +19,7 @@ createApp({
         fetch('assets/books.json')
             .then(res => res.json())
             .then(data => {
+                console.log("Books loaded:", data); //debug
                 this.books = data;
             })
             .catch(error => console.error('Error loading JSON', error));

@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Manager</title>
+    <link rel="icon" href="assets/favicon.ico" type="image-x-icon">
+    <!-- loads Vue v3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Book Manager</title>
     <style>
         table, th, td {
             border: 1px solid black;
@@ -24,15 +25,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Year</th>
-                    <th>Genre</th>
-                    <th>Actions</th>
+                    <th>Title</th><th>Author</th><th>Year</th><th>Genre</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(book, index) in books" :key="book.title">
+                <tr v-for="book in books" :key="book.title">
                     <td>{{ book.title }}</td>
                     <td>{{ book.author }}</td>
                     <td>{{ book.year }}</td>
@@ -56,7 +53,7 @@
         </form>
     </div>
 
-    <!-- loads script -->
+    <!-- loads custom script -->
     <script scr="src/app.js"></script>
 </body>
 </html>
