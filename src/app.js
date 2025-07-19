@@ -1,17 +1,20 @@
-new Vue({
-    el: '#app',
-    data: {
-        books: [],
-        form: {
-            title: '',
-            author: '',
-            year: '',
-            genre: '',
-        },
-        isEditing: false,
-        editingIndex: null
+const { createApp } = Vue
+
+createApp({
+    data() {
+        return {
+            books: [],
+            form: {
+                title: '',
+                author: '',
+                year: '',
+                genre: '',
+            },
+            isEditing: false,
+            editingIndex: null
+        };
     },
-    created() {
+    mounted() {
         fetch('assets/books.json')
             .then(res => res.json())
             .then(data => {
@@ -23,6 +26,7 @@ new Vue({
         isValid(book) {
             return book.title && book.author && book.genre && Number.isFinite(book.year);
         },
+
         submitForm() {
             const newBook = { ...this.form };
             
@@ -65,4 +69,4 @@ new Vue({
             this.editingIndex = null;
         }
     }
-});
+}).mount('#app');
