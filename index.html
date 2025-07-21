@@ -36,7 +36,6 @@
                     <td>{{ book.genre }}</td>
                     <td>
                         <button @click="editBook(index)">Edit</button>
-                        <button @click="deleteBook(index)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -51,9 +50,17 @@
             <input v-model="form.genre" placeholder="Genre">
             <button type="submit">{{ isEditing ? "Update" : "Add" }} Book</button>
         </form>
+
+        <!-- input field for deleting books -->
+        <h2>Deleting a Book</h2>
+        <p>Specify the title of the book you wish to remove:</p>
+        <form @submit.prevent="deleteBook">
+            <input v-model="deleteTitle" placeholder="Title to delete" required />
+            <button type="submit">Delete book</button>
+        </form>
     </div>
 
     <!-- loads custom script -->
-    <script scr="src/app.js"></script>
+    <script src="src/app.js"></script>
 </body>
 </html>
