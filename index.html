@@ -65,7 +65,7 @@
         <h2>Deleting a book</h2>
         <p>Specify the title of the book you wish to remove:</p>
         <form @submit.prevent="deleteBook">
-            <input v-model="deleteTitle" placeholder="Title to delete" required />
+            <input v-model="deleteTitle" placeholder="Title">
             <button type="submit">Delete Book</button>
         </form>
     </div>
