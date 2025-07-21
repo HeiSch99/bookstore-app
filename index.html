@@ -38,7 +38,7 @@
             </tbody>
         </table>
 
-        <!-- input fields adding a new book -->
+        <!-- input form for adding a new book -->
         <h2>Adding a new book</h2>
         <p>Specify a new book you wish to add:</p>
         <form @submit.prevent="addBook">
@@ -49,6 +49,7 @@
             <button type="submit">Add Book</button>
         </form>
 
+        <!-- input form for updating books -->
         <h2>Updating a book</h2>
         <p>Specify the information of the book you wish to update:</p>
         <form @submit.prevent="editBook">

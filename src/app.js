@@ -12,6 +12,7 @@ createApp({
                 year: '',
                 genre: ''
             },
+
             //variables to edit book fields
             originalTitle: '',
             editTitle: '',
@@ -19,8 +20,6 @@ createApp({
             editYear: '',
             editGenre: '',
 
-            isEditing: false,
-            editingIndex: null,
             //variable to delete book
             deleteTitle: ''
         };
@@ -34,18 +33,9 @@ createApp({
             })
             .catch(error => console.error('Error loading JSON', error));
     },
-    methods: {/*
-        isValid(book) {
-            return book.title && book.author && book.genre && Number.isFinite(book.year);
-        },*/
-
+    methods: {
         addBook() {
             const newBook = { ...this.form };
-            /*
-            if (!this.isValid(newBook)) {
-                alert("All fields must be filled and year must be valid.");
-                return;
-            }*/
 
             if (this.isEditing) {
                 this.books.splice(this.editingIndex, 1, newBook);
@@ -80,8 +70,6 @@ createApp({
             this.editGenre = '';
             
             alert("Book information updated!")
-            //this.editingIndex = index;
-            //this.isEditing = true;
         },
 
         deleteBook() {
@@ -98,12 +86,6 @@ createApp({
                 alert("No such book found.");
             }
             this.deleteTitle = '';
-        },
-
-        resetForm() {
-            this.form = { title: '', author: '', year: '', genre: '' };
-            this.isEditing = false;
-            this.editingIndex = null;
         }
     }
 }).mount('#app');
