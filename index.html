@@ -49,15 +49,16 @@
             <button type="submit">Add Book</button>
         </form>
 
-        <!--<h2>Updating a book</h2>
+        <h2>Updating a book</h2>
         <p>Specify the information of the book you wish to update:</p>
-        <form @submit.prevent="submitForm">
-            <input v-model="form.title" placeholder="Title">
-            <input v-model="form.author" placeholder="Author">
-            <input v-model="form.year" placeholder="Year">
-            <input v-model="form.genre" placeholder="Genre">
+        <form @submit.prevent="editBook">
+            <input v-model="originalTitle" placeholder="Original Title">
+            <input v-model="editTitle" placeholder="Title">
+            <input v-model="editAuthor" placeholder="Author">
+            <input v-model="editYear" placeholder="Year">
+            <input v-model="editGenre" placeholder="Genre">
             <button type="submit">Update Book</button>
-        </form>-->
+        </form>
 
         <!-- input field for deleting books -->
         <h2>Deleting a book</h2>

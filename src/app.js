@@ -5,14 +5,23 @@ createApp({
     data() {
         return {
             books: [],
+            //array to add book fields
             form: {
                 title: '',
                 author: '',
                 year: '',
-                genre: '',
+                genre: ''
             },
+            //variables to edit book fields
+            originalTitle: '',
+            editTitle: '',
+            editAuthor: '',
+            editYear: '',
+            editGenre: '',
+
             isEditing: false,
             editingIndex: null,
+            //variable to delete book
             deleteTitle: ''
         };
     },
@@ -48,16 +57,31 @@ createApp({
                     alert("A book with this title already exists.");
                     return;
                 }
-                alert("New book added!");
                 this.books.push(newBook);
+                alert("New book added!");
             }
-            this.resetForm();
+            this.form = { title: '', author: '', year: '', genre: '' };
         },
 
-        editBook(index) {
-            this.form = { ...this.books[index] };
-            this.editingIndex = index;
-            this.isEditing = true;
+        editBook() {
+            const title = this.originalTitle.trim();
+            const index = this.books.findIndex(book => book.title.toLowerCase() === title.toLowerCase());
+            
+            this.books.splice(index, 1, {
+                title: this.editTitle,
+                author: this.editAuthor,
+                year: Number(this.editYear),
+                genre: this.editGenre
+            });
+            this.originalTitle = '';
+            this.editTitle = '';
+            this.editAuthor = '';
+            this.editYear = '';
+            this.editGenre = '';
+            
+            alert("Book information updated!")
+            //this.editingIndex = index;
+            //this.isEditing = true;
         },
 
         deleteBook() {
@@ -69,7 +93,7 @@ createApp({
             const index = this.books.findIndex(book => book.title.toLowerCase() === title.toLowerCase());
             if (index !== -1) {
                 this.books.splice(index, 1);
-                alert(`"${title}" deleted!`);
+                alert(`Book ${title} deleted!`);
             } else {
                 alert("No such book found.");
             }
