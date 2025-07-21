@@ -25,7 +25,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>Title</th><th>Author</th><th>Year</th><th>Genre</th><th>Actions</th>
+                    <th>Title</th><th>Author</th><th>Year</th><th>Genre</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,29 +34,37 @@
                     <td>{{ book.author }}</td>
                     <td>{{ book.year }}</td>
                     <td>{{ book.genre }}</td>
-                    <td>
-                        <button @click="editBook(index)">Edit</button>
-                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- input fields to update the table -->
-        <p>The table can be updated here:</p>
+        <!-- input fields adding a new book -->
+        <h2>Adding a new book</h2>
+        <p>Specify a new book you wish to add:</p>
+        <form @submit.prevent="addBook">
+            <input v-model="form.title" placeholder="Title">
+            <input v-model="form.author" placeholder="Author">
+            <input v-model="form.year" placeholder="Year">
+            <input v-model="form.genre" placeholder="Genre">
+            <button type="submit">Add Book</button>
+        </form>
+
+        <!--<h2>Updating a book</h2>
+        <p>Specify the information of the book you wish to update:</p>
         <form @submit.prevent="submitForm">
             <input v-model="form.title" placeholder="Title">
             <input v-model="form.author" placeholder="Author">
             <input v-model="form.year" placeholder="Year">
             <input v-model="form.genre" placeholder="Genre">
-            <button type="submit">{{ isEditing ? "Update" : "Add" }} Book</button>
-        </form>
+            <button type="submit">Update Book</button>
+        </form>-->
 
         <!-- input field for deleting books -->
-        <h2>Deleting a Book</h2>
+        <h2>Deleting a book</h2>
         <p>Specify the title of the book you wish to remove:</p>
         <form @submit.prevent="deleteBook">
             <input v-model="deleteTitle" placeholder="Title to delete" required />
-            <button type="submit">Delete book</button>
+            <button type="submit">Delete Book</button>
         </form>
     </div>
 

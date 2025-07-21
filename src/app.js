@@ -30,7 +30,7 @@ createApp({
             return book.title && book.author && book.genre && Number.isFinite(book.year);
         },*/
 
-        submitForm() {
+        addBook() {
             const newBook = { ...this.form };
             /*
             if (!this.isValid(newBook)) {
@@ -48,6 +48,7 @@ createApp({
                     alert("A book with this title already exists.");
                     return;
                 }
+                alert("New book added!");
                 this.books.push(newBook);
             }
             this.resetForm();
