@@ -1,11 +1,11 @@
-console.log("app.js is running."); //debug
+//console.log("app.js is running."); //debug
 const { createApp } = Vue;
 
 createApp({
     data() {
         return {
             books: [],
-            //array to add book fields
+            //array for adding a book entry
             form: {
                 title: '',
                 author: '',
@@ -13,29 +13,30 @@ createApp({
                 genre: ''
             },
 
-            //variables to edit book fields
+            //variables for editing a book entry
             originalTitle: '',
             editTitle: '',
             editAuthor: '',
             editYear: '',
             editGenre: '',
 
-            //variable to delete book
+            //variable for deleting a book entry
             deleteTitle: ''
         };
     },
     mounted() {
+        //parses the data from JSON for further manipulation 
         fetch('assets/books.json')
             .then(res => res.json())
             .then(data => {
-                console.log("Books loaded:", data); //debug
+                //console.log("Books loaded:", data); //debug
                 this.books = data;
             })
             .catch(error => console.error('Error loading JSON', error));
     },
     methods: {
 
-        //checks for empty form fields and invalid year
+        //checks for empty entry fields and an invalid year
         validationCheck(title, author, year, genre) {
             if (!title.trim() || !author.trim() || !year || !genre.trim() || isNaN(year)) {
                 alert("Warning: All fields must be filled and year must be a valid number.")
@@ -55,6 +56,7 @@ createApp({
 
         //adds a new book to the table
         addBook() {
+            //initialises attributes of a new entry
             const title = this.form.title.trim();
             const author = this.form.author.trim();
             const year = Number(this.form.year);
@@ -71,6 +73,7 @@ createApp({
             
             if(!this.validationCheck(title, author, year, genre)) return;
 
+            //adds a new book entry
             this.books.push(this.form);
             this.form = { title: '', author: '', year: '', genre: '' };
 
@@ -79,7 +82,10 @@ createApp({
 
         //updates the book data in the table
         editBook() {
+            //initialises the book title whose attributes needs to be changed
             const origin = this.originalTitle.trim();
+            
+            //initialises edited attributes
             const title = this.editTitle.trim();
             const author = this.editAuthor.trim();
             const year = Number(this.editYear);
@@ -87,7 +93,7 @@ createApp({
 
             if(this.fieldCheck(origin)) return;
 
-            //check if a book is in the table
+            //check if the book entry is in the table
             const index = this.books.findIndex(book => book.title.toLowerCase() === origin.toLowerCase());
             if(index === -1) {
                 alert(`Warning: No book found with the title ${origin}.`);
@@ -96,7 +102,10 @@ createApp({
 
             if(!this.validationCheck(title, author, year, genre)) return;
 
+            //removes the original attributes and replaces them with edited ones
             this.books.splice(index, 1, { title, author, year, genre });
+
+            //resets the variables that stored edited attributes
             this.originalTitle = '';
             this.editTitle = '';
             this.editAuthor = '';
@@ -112,13 +121,14 @@ createApp({
 
             if(this.fieldCheck(title)) return;
 
-            //check if a book is in the table
+            //check if the book entry is in the table
             const index = this.books.findIndex(book => book.title.toLowerCase() === title.toLowerCase());
             if (index === -1) {
                 alert(`Warning: No book found with the title ${title}.`);
                 return;
             }
 
+            //removes the book entry from the table
             this.books.splice(index, 1);
             this.deleteTitle = '';
 
